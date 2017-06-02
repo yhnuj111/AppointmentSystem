@@ -63,7 +63,7 @@ public class UserLogin extends JFrame {
 		lblPassword.setBounds(81, 174, 79, 16);
 		contentPane.add(lblPassword);
 		
-		JButton btnPatientLogin = new JButton("Patient Login");
+		JButton btnPatientLogin = new JButton("Visitor Login");
 		btnPatientLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
@@ -92,7 +92,7 @@ public class UserLogin extends JFrame {
 		btnPatientLogin.setBounds(40, 225, 117, 29);
 		contentPane.add(btnPatientLogin);
 		
-		JButton btnDoctorLogin = new JButton("Doctor Login");
+		JButton btnDoctorLogin = new JButton("Insititution Login");
 		btnDoctorLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
@@ -119,7 +119,7 @@ public class UserLogin extends JFrame {
 
 			}
 		});
-		btnDoctorLogin.setBounds(185, 225, 117, 29);
+		btnDoctorLogin.setBounds(169, 225, 133, 29);
 		contentPane.add(btnDoctorLogin);
 		
 		JButton btnRegister = new JButton("Register");

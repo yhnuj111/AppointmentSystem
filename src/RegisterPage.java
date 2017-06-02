@@ -5,6 +5,9 @@ import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.mysql.jdbc.Statement;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -118,7 +121,8 @@ public class RegisterPage extends JFrame {
 						int contact = Integer.parseInt(contactnum.getText());
 						String username1 = username_field.getText();
 						String password1 = password_field.getText();
-						String query = "insert into DoctorIdInfo (DoctorId,lastname,firstname,username,password,age,contactNumber) values(2,?,?,?,?,?,?)";
+					
+						String query = "insert into DoctorIdInfo (lastname,firstname,username,password,age,contactNumber) values(?,?,?,?,?,?)";
 						PreparedStatement statement = myConn.prepareStatement(query);
 						statement.setString(1, lastname1);
 						statement.setString(2, firstname1);
@@ -142,6 +146,38 @@ public class RegisterPage extends JFrame {
 					}
 						
 						
+				}else if(rdbtnPateint.isSelected()){
+					try{
+						Connection myConn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/Account", "root", "root");
+						String firstname1 = firstname_field.getText();
+						String lastname1 = lastname_field.getText();
+						int age1 = Integer.parseInt(age.getText());
+						int contact = Integer.parseInt(contactnum.getText());
+						String username1 = username_field.getText();
+						String password1 = password_field.getText();
+						
+						String query = "insert into PatientId (lastname,firstname,user_name,password,age,contactNumber) values(?,?,?,?,?,?)";
+						PreparedStatement statement = myConn.prepareStatement(query);
+						statement.setString(1, lastname1);
+						statement.setString(2, firstname1);
+						statement.setString(3, username1);
+						statement.setString(4, password1);
+						statement.setInt(5, age1);
+						statement.setInt(6, contact);
+						
+						int set = statement.executeUpdate();
+	                    if(set == 1){
+	                    	JOptionPane.showMessageDialog(null, "Account created!");
+	                    	UserLogin ui = new UserLogin();	                
+	                    	ui.setVisible(true);
+	                    	dispose();
+	                    	
+	                    }else{
+	                    	JOptionPane.showMessageDialog(null, "Please enter valid information!");
+	                    }
+					}catch(Exception exc){
+						exc.printStackTrace();
+					}
 				}
 
 			}
